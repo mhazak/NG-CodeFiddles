@@ -1,1 +1,29 @@
-<p>login works!</p>
+<div class="container">
+    <div class="form-container">
+      	<h1 class="title">Login</h1>
+
+		<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+			<mat-form-field appearance="outline">
+				<mat-label>Enter your email</mat-label>
+				<input  matInput formControlName="email">
+				<mat-error *ngIf="loginForm.get('email')?.errors">
+					{{ loginForm.get('email')?.errors['required'] ? 'Email is required' : 'Please enter a valid email'}}
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Enter your password</mat-label>
+				<input type="password" matInput formControlName="password" >
+				<mat-error *ngIf="loginForm.get('password')?.errors">
+					{{ loginForm.get('email')?.errors['required'] ? 'Password is required' : 'Password should be atleast 6 characters long'}}
+				</mat-error>
+			</mat-form-field>
+
+			<div class="buttons-container">
+				<button [disabled]="loginForm.invalid" class="login-button" mat-raised-button type="submit">Login </button>
+				<p>OR</p>
+				<button routerLink="/create-account" mat-button>Create account</button>
+			</div>
+      	</form>
+    </div>
+</div>
