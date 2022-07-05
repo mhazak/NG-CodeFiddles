@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-account',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateAccountComponent implements OnInit {
 
-  	constructor() { }
+  	constructor(private userService: UserService) { }
 
   	createAccountForm = new FormGroup({
 		email: new FormControl('', [Validators.email, Validators.required]),
@@ -17,5 +18,12 @@ export class CreateAccountComponent implements OnInit {
 
   	ngOnInit(): void {
   	}
+
+	onCreateAccount () {
+		this.userService.createAccount({
+			email: this.createAccountForm.value['email'],
+			password: this.createAccountForm.value['password'],
+		})
+	}
 
 }
