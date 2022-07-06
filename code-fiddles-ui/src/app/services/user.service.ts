@@ -12,12 +12,20 @@ export class UserService {
   	constructor(private http: HttpClient) { }
 
 	createAccount (model: User) {
-		console.log({model});
 		this.http.post(environment.backend + '/api/users/create/', model).subscribe(res => {
-
 			console.log({ res });
 		}, err => {
 			console.log({ err });
 		})
+	}
+
+	login (model: User) {
+
+		this.http.post(environment.backend + '/api/users/login/', model).subscribe(res => {
+			console.log({res});
+		}, err => {
+			console.log({err});
+		})
+
 	}
 }
