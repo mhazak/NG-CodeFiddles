@@ -12,13 +12,15 @@ import { MaterialModule } from 'material.module';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './app.reducer';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopbarComponent,
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
