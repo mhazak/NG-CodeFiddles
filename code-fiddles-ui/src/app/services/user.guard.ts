@@ -3,20 +3,19 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 
-import * as fromUser from './user.reducer';
+import * as fromRoot from '../app.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserGuard implements CanActivate {
 
-	constructor(private store: Store<fromUser.State>) {}
+	constructor(private store: Store<fromRoot.State>) {}
 
   	canActivate(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-		return this.store.select(fromUser.getIsAuth).pipe(take(1));
+		return this.store.select(fromRoot.getIsAuthenticated).pipe(take(1));
 	}
 
 }
