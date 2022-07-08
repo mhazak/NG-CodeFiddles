@@ -16,7 +16,9 @@ export class UserService {
   	constructor(private http: HttpClient, private store: Store<fromRoot.State>, private router: Router) { }
 
 	createAccount (model: User) {
-		this.http.post(environment.backend + '/api/users/create/', model).subscribe(res => {
+		this.http.post(environment.backend + '/api/users/create/', model).subscribe((res: any) => {
+			if (res.success)
+				this.store.dispatch(new userActions.SetAuthenticated());
 			console.log({ res });
 		}, err => {
 			console.log({ err });
