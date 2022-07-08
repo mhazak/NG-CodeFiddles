@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-topbar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit {
 
-  constructor() { }
+  	constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-  }
+  	ngOnInit(): void {
+  	}
+
+	onLogout() {
+		this.userService.logout();
+	}
 
 }

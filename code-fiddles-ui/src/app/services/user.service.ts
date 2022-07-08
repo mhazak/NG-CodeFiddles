@@ -36,6 +36,10 @@ export class UserService {
 
 	}
 
+	logout () {
+		this.store.dispatch(new userActions.SetUnauthenticated())
+	}
+
 	initAuthListener () {
 		const isAuth = localStorage.getItem('isAuth');
 		if (isAuth) {
