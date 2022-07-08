@@ -41,14 +41,9 @@ export class UserService {
 	}
 
 	initAuthListener () {
-		const isAuth = localStorage.getItem('isAuth');
-		if (isAuth) {
-			this.store.dispatch(new userActions.SetAuthenticated());
-			this.router.navigate(['/']);
-		} else {
-			this.store.dispatch(new userActions.SetUnauthenticated());
-			this.router.navigate(['/login']);
-		}
-		console.log({isAuth});
+		this.store.dispatch(new userActions.CheckAuthenticated());
+		this.store.select(fromRoot.getIsAuthenticated).subscribe(isAuthenticated => {
+			this.router.navigate([isAuthenticated ? '/' : '/login'])
+		})
 	}
 }
