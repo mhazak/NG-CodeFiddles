@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const env = require('./env.json');
+const mongoose = require('mongoose');
+const app = express();
 
 const userRoute = require('./routes/user');
-const mongoose = require('mongoose');
+const fiddleRoute = require('./routes/fiddle');
 
-const app = express();
 
 app.use(express.json());
 app.use(cors({
@@ -28,6 +29,7 @@ mongoose.connect(env.db, {
 })
 
 app.use('/api/users', userRoute);
+app.use('/api/fiddles', fiddleRoute);
 
 app.listen(3000, () => {
     console.log('server is running at port 3000!');
