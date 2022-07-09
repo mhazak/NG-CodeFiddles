@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from 'material.module';
+import { FormsModule } from '@angular/forms';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
@@ -31,10 +32,12 @@ import { CodingComponent } from './pages/coding/coding.component';
     AppRoutingModule,
     BrowserAnimationsModule,
 	ReactiveFormsModule,
+	FormsModule,
 	MaterialModule,
 	HttpClientModule,
 	StoreModule.forRoot(reducers),
-	MonacoEditorModule.forRoot()
+	MonacoEditorModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
