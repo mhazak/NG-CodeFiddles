@@ -1,7 +1,7 @@
 <div class="nav-container">
 	<div class="branding">CodeFiddles</div>
 
-	<button mat-icon-button (click)="onLogout()">
+	<button mat-icon-button (click)="onLogout()" *ngIf="isAuth$ | async">
 		<mat-icon>logout</mat-icon>
 	</button>
 </div>
