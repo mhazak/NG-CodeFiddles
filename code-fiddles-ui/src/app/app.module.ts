@@ -13,6 +13,7 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './app.reducer';
 import { HomeComponent } from './pages/home/home.component';
+import { CodingComponent } from './pages/coding/coding.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './pages/home/home.component';
     TopbarComponent,
     LoginComponent,
     CreateAccountComponent,
-    HomeComponent
+    HomeComponent,
+    CodingComponent
   ],
   imports: [
     BrowserModule,
