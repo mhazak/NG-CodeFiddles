@@ -25,7 +25,7 @@ import { CodingComponent } from './pages/coding/coding.component';
     LoginComponent,
     CreateAccountComponent,
     HomeComponent,
-    CodingComponent
+    CodingComponent,
   ],
   imports: [
     BrowserModule,
