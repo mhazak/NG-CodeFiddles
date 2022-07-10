@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodingComponent implements OnInit {
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+		console.log('funguje!');
+	}
 
+	editorOptions = { theme: 'vs-dark', language: 'javascript' };
+	code: string = 'function x() { \nconsole.log("Hello world");\n}';
 }
