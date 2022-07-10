@@ -7,10 +7,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserGuard } from './services/user.guard';
 
 const routes: Routes = [
-	{ path: '', component: HomeComponent, canActivate: [UserGuard]},
+	{ path: '', component: HomeComponent, canActivate: [UserGuard], pathMatch: 'full'},
 	{ path: 'login', component: LoginComponent },
 	{ path: 'create-account', component: CreateAccountComponent },
-	{ path: 'coding/:fiddleid', component: CodingComponent }
+	{ path: 'coding/:id', component: CodingComponent },
 ];
 
 @NgModule({
