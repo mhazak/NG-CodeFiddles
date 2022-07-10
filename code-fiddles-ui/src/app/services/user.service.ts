@@ -45,7 +45,7 @@ export class UserService {
 	initAuthListener () {
 		this.store.dispatch(new userActions.CheckAuthenticated());
 		this.store.select(fromRoot.getIsAuthenticated).subscribe(isAuthenticated => {
-			this.router.navigate([isAuthenticated ? '/' : '/login'])
-		})
+			this.router.navigate([isAuthenticated ? location.pathname : '/login'])
+		});
 	}
 }
