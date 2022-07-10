@@ -3,6 +3,7 @@ const cors = require('cors');
 const env = require('./env.json');
 const mongoose = require('mongoose');
 const app = express();
+const axios = require('axios').default;
 
 const userRoute = require('./routes/user');
 const fiddleRoute = require('./routes/fiddle');
@@ -30,6 +31,15 @@ mongoose.connect(env.db, {
 
 app.use('/api/users', userRoute);
 app.use('/api/fiddles', fiddleRoute);
+
+app.use('/api/compile/', (req, res) => {
+    const _req = req.body;
+    _req['clientId'] = env.jdoodle_clientId;
+    _req['clientSecret'] = env.jdoodle_clientSecret;
+
+    const result = await axios.post(env.jdoodle_endpoint, _req)
+    res.json(result);
+})
 
 app.listen(3000, () => {
     console.log('server is running at port 3000!');
