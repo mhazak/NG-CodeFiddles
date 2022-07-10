@@ -19,6 +19,7 @@ export class UserService {
 		this.http.post(environment.backend + '/api/users/create/', model).subscribe((res: any) => {
 			if (res.success)
 				this.store.dispatch(new userActions.SetAuthenticated());
+				this.router.navigate(['/']);
 			console.log({ res });
 		}, err => {
 			console.log({ err });
@@ -30,6 +31,7 @@ export class UserService {
 		this.http.post(environment.backend + '/api/users/login/', model).subscribe((res: any) => {
 			if (res.success) {
 				this.store.dispatch(new userActions.SetAuthenticated());
+				this.router.navigate(['/']);
 			}
 			console.log({res});
 		}, err => {
