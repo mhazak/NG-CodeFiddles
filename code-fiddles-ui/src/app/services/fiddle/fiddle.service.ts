@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import * as fromRoot from '../../app.reducer';
+import * as FiddleActions from './fiddle.actions';
+
 import { environment } from 'src/environments/environment';
+import { Store } from '@ngrx/store';
+import { FiddleModel } from './fiddle.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FiddleService {
 
-  	constructor(private http: HttpClient) { }
+  	constructor(private http: HttpClient, private store: Store<fromRoot.State>) { }
 
 	getFiddles() {
-		this.http.get(environment.backend + '/api/fiddles/').subscribe(res => {
+		this.http.get(environment.backend + '/api/fiddles/').subscribe((res: FiddleModel[]) => {
+			this.store.dispatch(new FiddleActions.SetAvailableFiddles(res));
 			console.log({res});
 		});
 	}
@@ -31,6 +37,7 @@ export class FiddleService {
 	createFiddle() {
 		const model = {};
 		this.http.post(environment.backend + '/api/fiddles/create/', model).subscribe(res => {
+			this.store.dispatch(new FiddleActions.FiddleAdded(model));
 			console.log({res});
 		}, err => {
 			console.log({err});
