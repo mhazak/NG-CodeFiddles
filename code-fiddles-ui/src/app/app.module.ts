@@ -39,8 +39,6 @@ import { CodingComponent } from './pages/coding/coding.component';
 	HttpClientModule,
 	StoreModule.forRoot(reducers),
 	MonacoEditorModule.forRoot(),
-	EffectsModule.forRoot([]),
-	StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
