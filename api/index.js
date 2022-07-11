@@ -32,7 +32,7 @@ mongoose.connect(env.db, {
 app.use('/api/users', userRoute);
 app.use('/api/fiddles', fiddleRoute);
 
-app.use('/api/compile/', (req, res) => {
+app.use('/api/compile/', async (req, res) => {
     const _req = req.body;
     _req['clientId'] = env.jdoodle_clientId;
     _req['clientSecret'] = env.jdoodle_clientSecret;
