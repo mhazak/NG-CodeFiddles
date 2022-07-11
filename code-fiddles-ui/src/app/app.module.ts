@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from 'material.module';
 import { FormsModule } from '@angular/forms';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { EffectsModule } from "@ngrx/effects";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
@@ -37,7 +39,8 @@ import { CodingComponent } from './pages/coding/coding.component';
 	HttpClientModule,
 	StoreModule.forRoot(reducers),
 	MonacoEditorModule.forRoot(),
-
+	EffectsModule.forRoot([]),
+	StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
