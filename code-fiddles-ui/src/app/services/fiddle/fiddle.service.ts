@@ -31,14 +31,8 @@ export class FiddleService {
 		});
 	}
 
-	createFiddle() {
-		const model = {};
-		this.http.post(environment.backend + '/api/fiddles/create/', model).subscribe(res => {
-			// this.store.dispatch();
-			console.log({res});
-		}, err => {
-			console.log({err});
-		})
+	createFiddle(model: FiddleModel) {
+		return this.http.post(environment.backend + '/api/fiddles/create/', model)
 	}
 
 	updateFiddle(model) {
