@@ -20,6 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CodingComponent } from './pages/coding/coding.component';
 import { FiddleEffects } from './services/fiddle/fiddle.effects';
 import { FiddleComponent } from './pages/home/fiddle/fiddle.component';
+import { UserEffects } from './services/user.effects';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { FiddleComponent } from './pages/home/fiddle/fiddle.component';
 	HttpClientModule,
 	StoreModule.forRoot(reducers),
 	MonacoEditorModule.forRoot(),
-	EffectsModule.forRoot([FiddleEffects]),
+	EffectsModule.forRoot([FiddleEffects, UserEffects]),
 	StoreDevtoolsModule.instrument()
   ],
   providers: [],
