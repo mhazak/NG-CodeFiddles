@@ -16,38 +16,21 @@ export class UserService {
   	constructor(private http: HttpClient, private store: Store<fromRoot.State>, private router: Router) { }
 
 	createAccount (model: User) {
-		this.http.post(environment.backend + '/api/users/create/', model).subscribe((res: any) => {
-			if (res.success)
-				this.store.dispatch(new userActions.SetAuthenticated());
-				this.router.navigate(['/']);
-			console.log({ res });
-		}, err => {
-			console.log({ err });
-		})
+		return this.http.post(environment.backend + '/api/users/create/', model)
 	}
 
-	login (model: User) {
-
-		this.http.post(environment.backend + '/api/users/login/', model).subscribe((res: any) => {
-			if (res.success) {
-				this.store.dispatch(new userActions.SetAuthenticated());
-				this.router.navigate(['/']);
-			}
-			console.log({res});
-		}, err => {
-			console.log({err});
-		})
-
+	login (model: { email: string, password: string }) {
+		return this.http.post(environment.backend + '/api/users/login/', model)
 	}
 
-	logout () {
-		this.store.dispatch(new userActions.SetUnauthenticated())
-	}
+	// logout () {
+	// 	this.store.dispatch(new userActions.SetUnauthenticated())
+	// }
 
-	initAuthListener () {
-		this.store.dispatch(new userActions.CheckAuthenticated());
-		this.store.select(fromRoot.getIsAuthenticated).subscribe(isAuthenticated => {
-			this.router.navigate([isAuthenticated ? location.pathname : '/login'])
-		});
-	}
+	// initAuthListener () {
+	// 	this.store.dispatch(new userActions.CheckAuthenticated());
+	// 	this.store.select(fromRoot.getIsAuthenticated).subscribe(isAuthenticated => {
+	// 		this.router.navigate([isAuthenticated ? location.pathname : '/login'])
+	// 	});
+	// }
 }
