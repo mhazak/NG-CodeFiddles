@@ -1,5 +1,6 @@
 const express = require('express');
 const FiddleModel = require('../models/fiddle');
+const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ router.get('', async(req, res) => {
 router.post('/create/', async(req, res) => {
     const model = req.body;
     const fiddle = new FiddleModel(model);
+    model.id = uuidv4();
 
     await FiddleModel.create(fiddle);
     res.json({ success: true })
