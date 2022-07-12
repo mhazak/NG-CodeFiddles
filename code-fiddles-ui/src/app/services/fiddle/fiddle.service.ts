@@ -16,10 +16,7 @@ export class FiddleService {
   	constructor(private http: HttpClient, private store: Store<fromRoot.State>) { }
 
 	getFiddles() {
-		this.http.get(environment.backend + '/api/fiddles/').subscribe((res: FiddleModel[]) => {
-			this.store.dispatch(new FiddleActions.SetAvailableFiddles(res));
-			console.log({res});
-		});
+		return this.http.get(environment.backend + '/api/fiddles/');
 	}
 
 	getFiddle(id: string) {
@@ -37,7 +34,7 @@ export class FiddleService {
 	createFiddle() {
 		const model = {};
 		this.http.post(environment.backend + '/api/fiddles/create/', model).subscribe(res => {
-			this.store.dispatch(new FiddleActions.FiddleAdded(model));
+			// this.store.dispatch();
 			console.log({res});
 		}, err => {
 			console.log({err});
