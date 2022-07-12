@@ -18,7 +18,7 @@ router.post('/login/', async(req, res) => {
     if (!success)
         res.json({ success, message: 'Wrong e-mail address or password', mine: hash, yours: body.password });
     else
-        res.json({ success });
+        res.json({ success, id: user._id.toString() });
 });
 
 router.post('/create/', async (req, res) => {
