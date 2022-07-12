@@ -18,6 +18,8 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { reducers } from './app.reducer';
 import { HomeComponent } from './pages/home/home.component';
 import { CodingComponent } from './pages/coding/coding.component';
+import { FiddleEffects } from './services/fiddle/fiddle.effects';
+import { FiddleComponent } from './pages/home/fiddle/fiddle.component';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { CodingComponent } from './pages/coding/coding.component';
     CreateAccountComponent,
     HomeComponent,
     CodingComponent,
+    FiddleComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,8 @@ import { CodingComponent } from './pages/coding/coding.component';
 	HttpClientModule,
 	StoreModule.forRoot(reducers),
 	MonacoEditorModule.forRoot(),
+	EffectsModule.forRoot([FiddleEffects]),
+	StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
