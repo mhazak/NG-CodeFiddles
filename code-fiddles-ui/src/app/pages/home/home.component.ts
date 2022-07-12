@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { LOAD_FIDDLES } from 'src/app/services/fiddle/fiddle.actions';
+import { FiddleModel } from 'src/app/services/fiddle/fiddle.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  	constructor(private store: Store<{fiddles: FiddleModel[]}>) { }
 
-  ngOnInit(): void {
-  }
+	fiddles$: Observable<FiddleModel[]> = this.store.select(state => state.fiddles);
+	ngOnInit(): void {
+		this.store.dispatch(LOAD_FIDDLES({ loading: true }))
+	}
 
 }
