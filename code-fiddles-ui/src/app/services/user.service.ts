@@ -23,6 +23,10 @@ export class UserService {
 		return this.http.post(environment.backend + '/api/users/login/', model)
 	}
 
+	checkIsAuth () {
+		return JSON.parse(localStorage.getItem('isAuth'));
+	}
+
 	// logout () {
 	// 	this.store.dispatch(new userActions.SetUnauthenticated())
 	// }
