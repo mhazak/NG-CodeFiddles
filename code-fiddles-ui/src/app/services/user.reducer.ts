@@ -1,4 +1,4 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, createSelector, on } from "@ngrx/store";
 import * as UserActions from "./user.actions";
 
 export interface State {
@@ -89,6 +89,9 @@ export const authReducer = createReducer(initialState,
 	}),
 
 )
+
+export const getAuth = (state: State) => state.isAuthenticated;
+
 // export function authReducer (state: State = initialState, action: AuthActions) {
 // 	switch (action.type) {
 
