@@ -21,8 +21,8 @@ router.get('', async(req, res) => {
 
 router.post('/create/', async(req, res) => {
     const model = req.body;
-    const fiddle = new FiddleModel(model);
     model.id = uuidv4();
+    const fiddle = new FiddleModel(model);
 
     await FiddleModel.create(fiddle);
     res.json({ success: true })
